@@ -22,6 +22,7 @@ public class SpController : MonoBehaviour
     public int thestringlength;
     public int countPalindrome;
     public Text palindrometext;
+    int counter = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -60,22 +61,32 @@ public class SpController : MonoBehaviour
     {
         int randomNumber;
         countPalindrome = 0;
-
+        
 
         randomNumber = Random.Range(0, 3);
         randomString = "";
 
         string[] characters = new string[] { "x", "a", "3" };
-        if (randomNumber == 1)
+        if (counter >= 7)
         {
             Text.text = GeneratePalindrome(characters);
             countPalindrome = countPalindrome + 1;
             palindrometext.text = countPalindrome.ToString();
-
         }
         else
         {
-            Text.text = GenerateRandomString(characters);
+            if (randomNumber == 1)
+            {
+                Text.text = GeneratePalindrome(characters);
+                countPalindrome = countPalindrome + 1;
+                palindrometext.text = countPalindrome.ToString();
+
+            }
+            else
+            {
+                counter++;
+                Text.text = GenerateRandomString(characters);
+            }
         }
     }
 
